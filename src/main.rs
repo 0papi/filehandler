@@ -2,7 +2,6 @@ use std::{env, fs::read_to_string};
 use sha1::{Sha1, Digest};
 use rs_sha256::Sha256Hasher;
 use std::hash::Hasher;
-use md5;
 
 fn main() {
     // get command line arguments
@@ -10,7 +9,7 @@ fn main() {
     let cmd_args: Vec<String> = env::args().collect();
     let cmd_args_len = cmd_args.len();
 
-    let algos: [String; 3] = [String::from("MD5"), String::from("SHA-1"), String::from("SHA-256")];
+    let algos: [String; 3] = [String::from("ASCON"), String::from("SHA-1"), String::from("SHA-256")];
 
     //given that there should be two commands in addition to the standard command, throw an error if the arguments length isnt three
 
@@ -26,36 +25,30 @@ fn main() {
 
     // check if the chosen method isnt
     if !algos.contains(&method_type.to_uppercase()) {
-        panic!("Please include a valid hash algorithm method. Available options include: MD5, SHA-1, SHA-256");
+        panic!("Please include a valid hash algorithm method. Available options include: SHA-1 and SHA-256");
     }
 
-    println!("now let's see if we can find the file");
 
     let file = read_to_string(file_path);
 
     match file {
         Ok(val) => {
-            println!("File found: {}", val);
+            println!("File Content: {}", val);
 
             match method_type.to_uppercase().as_str() {
-                "MD5" => println!("{}", hash_with_md5(file_path)),
+
                 "SHA-1" => println!("{}", hash_with_sha1(file_path)),
                 "SHA-256" => println!("{}", hash_with_sha256(file_path)),
                 _ => panic!("Please include a valid hash algorithm method. Available options include: MD5, SHA-1, SHA-256"),
             }
         },
-        Err(_) => panic!("File not found"),
+        Err(_) => panic!("Invalid file path. File was not foun"),
     }
 
 }
 
 
 
-
-fn hash_with_md5(file_path: &String) -> String {
-    let hash_val = md5::compute(file_path);
-    format!("{:x}", hash_val)
-}
 
 fn hash_with_sha256(input: &String) -> String {
     let mut sha256hasher = Sha256Hasher::default();

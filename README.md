@@ -6,32 +6,32 @@ A CLI based application that allows a user to obtain the hash of an entire file.
 
 ## Input Validation:
 
-- [ ] Validate user input, ensuring the specified file exists.
+- [*] Validate user input, ensuring the specified file exists.
 
 ## Hashing Functionality:
 
-- [ ] Implement hashing functionality using a hashing crate like crypto or ring.
-- [ ] Allow users to choose the hashing algorithm through CLI options.
+- [*] Implement hashing functionality using appropriate crate
+- [*] Allow users to choose the hashing algorithm through CLI options.
 
 ## File Reading:
 
-- [ ] Read the contents of the specified file.
+- [*] Read the contents of the specified file.
 
 ## Hash Calculation:
 
-- [ ] Calculate the hash of the file content using the chosen algorithm.
+- [*] Calculate the hash of the file content using the chosen algorithm.
 
 ## Output Display:
 
-- [ ] Display the calculated hash to the user.
+- [*] Display the calculated hash to the user.
 
 ## Error Handling:
 
-- [ ] Implement error handling to gracefully handle issues such as file not found, invalid algorithms, etc.
+- [*] Implement error handling to gracefully handle issues such as file not found, invalid algorithms, etc.
 
 ## Logging:
 
-- [ ] Optionally, implement logging for informative output and error tracking.
+- [*] Optionally, implement logging for informative output and error tracking.
 
 ## Testing:
 
